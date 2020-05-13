@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FirstPresentationLogic
-{
+{  var closureDidValueChange : ((First.Something.CandyViewModel)-> Void)?{get set}
   func presentSomething(response: First.Something.Response)
   func interactor(_ interactor: FirstBusinessLogic, didFetch object: CandyEntity)
     func interactor(_ interactor: FirstBusinessLogic, didUpdateTotalPrice totalPrice:Float, totalInclTax:Float,vat:Float, quantity:Int)
@@ -21,6 +21,13 @@ protocol FirstPresentationLogic
 
 class FirstPresenter: FirstPresentationLogic
 {
+    var closureDidValueChange: ((First.Something.CandyViewModel) -> Void)?
+    
+   
+    
+    
+    
+    
     func interactor(_ interactor: FirstBusinessLogic, didUpdateTotalPrice totalPrice: Float, totalInclTax: Float, vat: Float, quantity: Int) {
         let totalPriceText = "Total Price : \(totalPrice)€"
              let totalInclTaxText = "Incl Tax : \(totalInclTax)€"
@@ -52,7 +59,7 @@ class FirstPresenter: FirstPresentationLogic
        description: object.description,
        price: priceText,
        imageName: object.imageName)
-    
+    closureDidValueChange?(soome)
     viewController?.display(CandyViewModel: soome)
     }
     

@@ -91,6 +91,9 @@ class FirstViewController: UIViewController, FirstDisplayLogic
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
+    presenter.closureDidValueChange = { value in
+        print ("Value by closure" , value)
+    }
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
@@ -114,6 +117,7 @@ class FirstViewController: UIViewController, FirstDisplayLogic
   {
     super.viewDidLoad()
     interactor?.fetchCandy()
+    
     viewObject.closureDidValueChange = { value in
         print(value , "Is changed")
         self.interactor?.update(candyQuantity: value)
