@@ -11,10 +11,16 @@
 //
 
 import UIKit
-
+struct CandyEntity {
+    let title: String
+    let description: String
+    let price: Float
+    let imageName: String
+}
 protocol FirstBusinessLogic
-{
+{  func fetchCandy()
   func doSomething(request: First.Something.Request)
+  func update(candyQuantity quantity:Int)
 }
 
 protocol FirstDataStore
@@ -22,18 +28,43 @@ protocol FirstDataStore
   //var name: String { get set }
 }
 
-class FirstInteractor: FirstBusinessLogic, FirstDataStore
-{
-  var presenter: FirstPresentationLogic?
-  var worker: FirstWorker?
+class FirstInteractor: FirstBusinessLogic, FirstDataStore {
+  
+    private static let vat:Float = 6.5
+    private var candyEntity:CandyEntity?
+    
+   var presenter: FirstPresentationLogic?
+   var worker: FirstWorker?
   //var name: String = ""
   
   // MARK: Do something
-  
+    func update(candyQuantity quantity:Int) {
+       guard let candyEntity = self.candyEntity else {
+                 return
+             }
+        let totalPrice = candyEntity.price * Float(quantity)
+        let tax = (totalPrice/100) * FirstInteractor.vat
+        let totalInclTax = totalPrice + tax
+        presenter?.interactor(self,
+                              didUpdateTotalPrice: totalPrice,
+                              totalInclTax: totalInclTax,
+                              vat: FirstInteractor.vat,
+                              quantity: quantity)
+        
+    }
+    func fetchCandy() {
+        worker = FirstWorker()
+        worker?.fetchCandy(callBack: { (candyEntityd) in
+            self.candyEntity = candyEntityd
+            presenter?.interactor(self, didFetch: candyEntityd)
+        })
+    }
+    
+    
   func doSomething(request: First.Something.Request)
   {
     worker = FirstWorker()
-    worker?.doSomeWork()
+
     
     let response = First.Something.Response()
     presenter?.presentSomething(response: response)

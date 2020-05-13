@@ -24,8 +24,20 @@ enum First
     struct Response
     {
     }
-    struct ViewModel
+    struct CandyViewModel
     {
+        let title: String
+        let description: String
+        let price: String
+        let imageName: String
     }
+    
+    struct TotalPriceViewModel {
+        let totalPrice: String
+        let totalInclTax: String
+        let vat: String
+        let quantity: String
+    }
+    
   }
 }

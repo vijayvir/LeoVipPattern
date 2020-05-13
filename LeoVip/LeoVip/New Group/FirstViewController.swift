@@ -14,7 +14,8 @@ import UIKit
 
 protocol FirstDisplayLogic: class
 {
-  func displaySomething(viewModel: First.Something.ViewModel)
+    func display(CandyViewModel: First.Something.CandyViewModel)
+    func display(totalPriceViewModel viewModel: First.Something.TotalPriceViewModel)
 }
 
 
@@ -26,21 +27,46 @@ class Elements : NSObject {
        @IBOutlet weak private var quantityStepper: UIStepper!
        @IBOutlet weak private var quantityLabel: UILabel!
        
+        var closureDidValueChange : ((Int)-> Void)?
        @IBOutlet weak private var totalPriceLabel: UILabel!
        @IBOutlet weak private var taxLabel: UILabel!
        @IBOutlet weak private var inclTaxLabel: UILabel!
-     @IBAction func quantityStepperValueChanged(_ sender: Any) {
-        print
+       @IBAction func quantityStepperValueChanged(_ sender: Any) {
+        
+        print("\(Int(quantityStepper!.value))")
+        
+        closureDidValueChange?((Int(quantityStepper!.value)))
+    }
+      func set(viewModel: First.Something.CandyViewModel) {
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        priceLabel.text = viewModel.price
+
+        candyImageView.image = UIImage(named: viewModel.imageName)
+    }
+    func modifyView(viewModel: First.Something.TotalPriceViewModel){
+               quantityLabel.text = viewModel.quantity
+               totalPriceLabel.text = viewModel.totalPrice
+               taxLabel.text = viewModel.vat
+               inclTaxLabel.text = viewModel.totalInclTax
     }
 }
 
 class FirstViewController: UIViewController, FirstDisplayLogic
 {
+    func display(totalPriceViewModel viewModel: First.Something.TotalPriceViewModel) {
+        viewObject.modifyView(viewModel: viewModel)
+    }
+    
+    func display(CandyViewModel: First.Something.CandyViewModel) {
+        viewObject.set(viewModel: CandyViewModel)
+    }
+    
   var interactor: FirstBusinessLogic?
   var router: (NSObjectProtocol & FirstRoutingLogic & FirstDataPassing)?
 
   // MARK: Object lifecycle
-  
+  @IBOutlet weak private var viewObject: Elements!
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
   {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -51,6 +77,7 @@ class FirstViewController: UIViewController, FirstDisplayLogic
   {
     super.init(coder: aDecoder)
     setup()
+   
   }
   
   // MARK: Setup
@@ -86,21 +113,16 @@ class FirstViewController: UIViewController, FirstDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    interactor?.fetchCandy()
+    viewObject.closureDidValueChange = { value in
+        print(value , "Is changed")
+        self.interactor?.update(candyQuantity: value)
+    }
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething()
-  {
-    let request = First.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: First.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+
 }

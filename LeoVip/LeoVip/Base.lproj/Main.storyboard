@@ -110,6 +110,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="viewObject" destination="PiF-DW-OzZ" id="Qeg-2r-pJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="PiF-DW-OzZ" customClass="Elements" customModule="LeoVip" customModuleProvider="target">
