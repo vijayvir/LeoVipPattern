@@ -29,7 +29,6 @@
 		1881827B2466D8C20084FCDD /* Screenshot 2020-05-09 at 3.25.36 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 1881827A2466D8C20084FCDD /* Screenshot 2020-05-09 at 3.25.36 PM.png */; };
 		1881827D2466D8C90084FCDD /* Screenshot 2020-05-09 at 4.07.11 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 1881827C2466D8C90084FCDD /* Screenshot 2020-05-09 at 4.07.11 PM.png */; };
 		1881827F2466DCA10084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 1881827E2466DCA10084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */; };
-		188182812466DCD80084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 188182802466DCD80084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +56,6 @@
 		1881827A2466D8C20084FCDD /* Screenshot 2020-05-09 at 3.25.36 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2020-05-09 at 3.25.36 PM.png"; sourceTree = "<group>"; };
 		1881827C2466D8C90084FCDD /* Screenshot 2020-05-09 at 4.07.11 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2020-05-09 at 4.07.11 PM.png"; sourceTree = "<group>"; };
 		1881827E2466DCA10084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2020-05-09 at 6.11.59 PM.png"; sourceTree = "<group>"; };
-		188182802466DCD80084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screenshot 2020-05-09 at 6.11.59 PM.png"; path = "../../../../../Desktop/Screenshot 2020-05-09 at 6.11.59 PM.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +108,6 @@
 				1881827C2466D8C90084FCDD /* Screenshot 2020-05-09 at 4.07.11 PM.png */,
 				1881827E2466DCA10084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */,
 				1881827A2466D8C20084FCDD /* Screenshot 2020-05-09 at 3.25.36 PM.png */,
-				188182802466DCD80084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png */,
 				1817D6FD246BE3A300C8FC8E /* SecondPresenter.swift */,
 				1817D6FE246BE3A300C8FC8E /* SecondWorker.swift */,
 				1817D6FF246BE3A300C8FC8E /* SecondRouter.swift */,
@@ -185,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1881827F2466DCA10084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png in Resources */,
-				188182812466DCD80084FCDD /* Screenshot 2020-05-09 at 6.11.59 PM.png in Resources */,
 				188182732466B5460084FCDD /* LaunchScreen.storyboard in Resources */,
 				1881827D2466D8C90084FCDD /* Screenshot 2020-05-09 at 4.07.11 PM.png in Resources */,
 				1881827B2466D8C20084FCDD /* Screenshot 2020-05-09 at 3.25.36 PM.png in Resources */,

@@ -8,11 +8,7 @@
 
 import UIKit
 
-
-
 // https://medium.com/@saad.eloulladi/clean-architecture-for-ios-viper-vip-c19de40b71e2
-
-
 
 class ViewController: UIViewController {
  

@@ -17,6 +17,23 @@ protocol FirstDisplayLogic: class
   func displaySomething(viewModel: First.Something.ViewModel)
 }
 
+
+class Elements : NSObject {
+        @IBOutlet weak private var candyImageView: UIImageView!
+       @IBOutlet weak private var titleLabel: UILabel!
+       @IBOutlet weak private var descriptionLabel: UILabel!
+       @IBOutlet weak private var priceLabel: UILabel!
+       @IBOutlet weak private var quantityStepper: UIStepper!
+       @IBOutlet weak private var quantityLabel: UILabel!
+       
+       @IBOutlet weak private var totalPriceLabel: UILabel!
+       @IBOutlet weak private var taxLabel: UILabel!
+       @IBOutlet weak private var inclTaxLabel: UILabel!
+     @IBAction func quantityStepperValueChanged(_ sender: Any) {
+        print
+    }
+}
+
 class FirstViewController: UIViewController, FirstDisplayLogic
 {
   var interactor: FirstBusinessLogic?
