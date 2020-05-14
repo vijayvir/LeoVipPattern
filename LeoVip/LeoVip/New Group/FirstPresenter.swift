@@ -60,6 +60,7 @@ class FirstPresenter: FirstPresentationLogic
        price: priceText,
        imageName: object.imageName)
     closureDidValueChange?(soome)
+    viewController?.closureDidValueChange?(soome)
     viewController?.display(CandyViewModel: soome)
     }
     

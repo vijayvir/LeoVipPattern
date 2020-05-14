@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FirstDisplayLogic: class
-{
+{     var closureDidValueChange : ((First.Something.CandyViewModel)-> Void)?{get set}
     func display(CandyViewModel: First.Something.CandyViewModel)
     func display(totalPriceViewModel viewModel: First.Something.TotalPriceViewModel)
 }
@@ -54,6 +54,8 @@ class Elements : NSObject {
 
 class FirstViewController: UIViewController, FirstDisplayLogic
 {
+    var closureDidValueChange: ((First.Something.CandyViewModel) -> Void)?
+    
     func display(totalPriceViewModel viewModel: First.Something.TotalPriceViewModel) {
         viewObject.modifyView(viewModel: viewModel)
     }
@@ -93,6 +95,10 @@ class FirstViewController: UIViewController, FirstDisplayLogic
     interactor.presenter = presenter
     presenter.closureDidValueChange = { value in
         print ("Value by closure" , value)
+    }
+    closureDidValueChange = { vlaue in
+        print("😳" , vlaue)
+        
     }
     presenter.viewController = viewController
     router.viewController = viewController
